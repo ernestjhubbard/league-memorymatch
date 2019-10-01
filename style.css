@@ -12,16 +12,21 @@ header{
 aside{
   width:25vw;
   border:4px solid cyan;
+  border-radius:8px;
   height:75vh;
   display:flex;
   flex-wrap:wrap;
 }
-aside p{
-  height:10%;
+.paradiv{
+  height:10vh;
+  width:100%;
+  border: 4px solid white;
+  border-radius:8px;
 }
 .statbox{
   border:4px solid black;
-  height:auto;
+  border-radius:8px;
+  height:9vh;
   width:100%;
   margin: 0;
 }
@@ -30,6 +35,7 @@ main{
   height:75vh;
   border:4px solid violet;
   display:flex;
+  border-radius:8px;
 }
 .restcontainer{
   display:flex;
@@ -38,6 +44,7 @@ main{
   width:100%;
   height:100%;
   border:4px dashed white;
+  border-radius:8px;
   display:flex;
   flex-wrap: wrap;
 }
@@ -45,6 +52,7 @@ main{
   width:25vw;
   height:75vh;
   border:4px solid limegreen;
+  border-radius:8px;
 }
 .footer{
   height: 15vh;
@@ -64,8 +72,26 @@ main{
   height: 100%;
   width: 15%;
   border-radius:5px;
+  position:relative;
+}
+.cardfront,
+.cardback{
+  height: 100%;
+  width: 100%;
+  border-radius:5px;
   background-color: black;
-  background-image:url(One_Piece/Luffy/jollyroger.png);
   background-size:contain;
   background-repeat:no-repeat;
+  background-position:center;
+  background-image:url(One_Piece/Luffy/jollyroger.png);
+  position:absolute;
+}
+.hidden{
+  display:none;
+}
+.cardback{
+  position:absolute;
+  top:0;
+  background-image: url(One_Piece/Luffy/luffybakaface.jpg);
+  display:none;
 }
