@@ -68,11 +68,15 @@ main{
   display: flex;
   justify-content:space-evenly;
 }
-.card{
+.carddiv{
+  position:relative;
   height: 100%;
   width: 15%;
   border-radius:5px;
-  position:relative;
+}
+.cardfront{
+  background-image:url(One_Piece/Luffy/jollyroger.png);
+  z-index:1;
 }
 .cardfront,
 .cardback{
@@ -83,15 +87,20 @@ main{
   background-size:contain;
   background-repeat:no-repeat;
   background-position:center;
-  background-image:url(One_Piece/Luffy/jollyroger.png);
   position:absolute;
 }
 .hidden{
   display:none;
 }
-.cardback{
-  position:absolute;
-  top:0;
+.cardback1{
   background-image: url(One_Piece/Luffy/luffybakaface.jpg);
-  display:none;
+}
+.cardback2{
+  background-image: url(One_Piece/Luffy/luffybakaface.jpg);
+}
+.cardback3{
+  background-image: url(One_Piece/Luffy/luffymad.jpg);
+}
+.cardback4{
+  background-image: url(One_Piece/Luffy/gear4luffy.jpg);
 }
