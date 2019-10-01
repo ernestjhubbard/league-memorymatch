@@ -1,0 +1,106 @@
+body{
+  background-color: tomato;
+  font-size:20px;
+  margin:0;
+  overflow:hidden;
+}
+header{
+  border: 4px solid red;
+  height:10vh;
+  width:100vw;
+}
+aside{
+  width:25vw;
+  border:4px solid cyan;
+  border-radius:8px;
+  height:75vh;
+  display:flex;
+  flex-wrap:wrap;
+}
+.paradiv{
+  height:10vh;
+  width:100%;
+  border: 4px solid white;
+  border-radius:8px;
+}
+.statbox{
+  border:4px solid black;
+  border-radius:8px;
+  height:9vh;
+  width:100%;
+  margin: 0;
+}
+main{
+  width:75vw;
+  height:75vh;
+  border:4px solid violet;
+  display:flex;
+  border-radius:8px;
+}
+.restcontainer{
+  display:flex;
+}
+.container{
+  width:100%;
+  height:100%;
+  border:4px dashed white;
+  border-radius:8px;
+  display:flex;
+  flex-wrap: wrap;
+}
+.sider{
+  width:25vw;
+  height:75vh;
+  border:4px solid limegreen;
+  border-radius:8px;
+}
+.footer{
+  height: 15vh;
+  width: 100vw;
+  border: 4px solid magenta;
+}
+.row1,
+.row2,
+.row3{
+  height: 20%;
+  width: 100%;
+  margin:auto 0;
+  display: flex;
+  justify-content:space-evenly;
+}
+.carddiv{
+  position:relative;
+  height: 100%;
+  width: 15%;
+  border-radius:5px;
+}
+.cardfront{
+  background-image:url(One_Piece/Luffy/jollyroger.png);
+  z-index:1;
+}
+.cardfront,
+.cardback{
+  height: 100%;
+  width: 100%;
+  border-radius:5px;
+  background-color: black;
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  position:absolute;
+}
+.hidden{
+  display:none;
+}
+.cardback1{
+  background-image: url(One_Piece/Luffy/luffybakaface.jpg);
+}
+.cardback2{
+  background-image: url(One_Piece/Luffy/luffybakaface.jpg);
+}
+.cardback3{
+  background-image: url(One_Piece/Luffy/luffymad.jpg);
+}
+.cardback4{
+  background-image: url(One_Piece/Luffy/gear4luffy.jpg);
+}
