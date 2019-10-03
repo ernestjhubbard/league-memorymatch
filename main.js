@@ -1,30 +1,48 @@
 $(document).ready(initializeApp);
-
+//Global variables
+var gamesPlayed = ('.gamesplayed');
+var attempts = null;
+var games_played = null;
+var match_maxes = 2;
+var matches = null;
+var firstImage;
+var imageSource;
+var secondImage;
+var secondImageSource;
+var firstCardClicked = null;
+var secondCardClicked = null;
+var parent;
+var child;
+var child1;
+var child2;
+//Global Variables
 function initializeApp() {
   $('.card').on('click', handleCardClick);
   $('#modalYouWon').hide();
 }
 function showCard() {
-  $('.cardfront').removeClass('hidden')
+  firstCardClicked = null;
+  secondCardClicked = null;
 }
 function handleCardClick(event) {
   console.log(event);
-  var parent = $(event.currentTarget);
-  var child = parent.find('.cardfront');
-  child.addClass('hidden');
-  if (firstCardClicked === null) {
+  parent = $(event.currentTarget);
+  child = parent.find('.cardback');
+  child.removeClass('hidden');
+  if (firstCardClicked === null && secondCardClicked === null) {
     firstCardClicked = $(event.currentTarget);
     firstImage = firstCardClicked.find('.cardback');
     imageSource = firstImage.css('background-image');
+    child1 = child;
   }
-  else if (firstCardClicked !== null) {
+  else if (firstCardClicked !== null && secondCardClicked !== null) {
     secondCardClicked = $(event.currentTarget);
     secondImage = secondCardClicked.find('.cardback');
     secondImageSource = secondImage.css('background-image');
+    child2 = child;
     if (imageSource === secondImageSource) {
       console.log('match');
-      matches = matches + 1;
-      firstCardClicked = null;
+      matches++;
       if (matches === maxMatches) {
         $("#modalYouWon").modal({
           escapeClose: false,
@@ -33,16 +51,23 @@ function handleCardClick(event) {
         });
       }
     } else if (imageSource !== secondImageSource) {
-      setTimeout(showCard, 1500);
-      firstCardClicked = null;
+      setTimeout(function(){
+        child1.addClass('hidden');
+        child2.addClass('hidden');
+        firstCardClicked = null;
+        secondCardClicked = null;
+      }, 1500);
     }
   }
 };
-var firstImage;
-var imageSource;
-var secondImage;
-var secondImageSource;
-var firstCardClicked = null;
-var secondCardClicked = null;
-var matches = null;
-var maxMatches = 1;
+function calculateAccuracy(){
+var accuracy = matches / attempts;
+return accuracy;
+}
+function displayStats(){
+  var newAccuracy = calculateAccuracy()
+  newAccuracy *= 100;
+  var accuracyClass = $('.accuracy')
+  accuracyClass.text(newAccuracy.toFixed(0) + '%');
+  $('.attempts').text(attempts.toString());
+}

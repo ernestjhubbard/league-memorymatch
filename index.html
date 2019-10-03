@@ -13,9 +13,28 @@
   <title>Document</title>
 </head>
 
-<body>
+<body class='rivenimage'>
   <header>
-    header
+    <div class="headerimage">
+      <div class="statsdiv">
+        <div class="statsdivbox">
+          <div class="box">Matches : </div>
+          <div class="matches box">0</div>
+        </div>
+        <div class="statsdivbox">
+          <div class="box">Attempts :</div>
+          <div class="attempts box">0</div>
+        </div>
+        <div class="statsdivbox">
+          <div class="box">Accuracy :</div>
+          <div class="accuracy box">0</div>
+        </div>
+        <div class="statsdivbox">
+          <div class="box">Reset Game</div>
+          <div class="gamesplayed box"></div>
+        </div>
+      </div>
+    </div>
   </header>
   <div id="modalYouWon" class="modal">
     <p style="font-size: 32px">You won!<br>Play again?</p>
@@ -26,149 +45,132 @@
   </div>
   <div class="restcontainer">
     <aside>
-      <div class="paradiv">
-        <p>stats</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
     </aside>
-    <main>
-      <div class="container">
-        <div class="row1">
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback1"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback2"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback3"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback4"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback5"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback6"></div>
-            </div>
-          </div>
-        </div>
-        <div class="row2">
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback7"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback8"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback9"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback10"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback11"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback12"></div>
-            </div>
-          </div>
-        </div>
-        <div class="row3">
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback13"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback14"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback15"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback16"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback17"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback18"></div>
-            </div>
-          </div>
+    <div class="main">
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden illaoi"></div>
         </div>
       </div>
-    </main>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden ziggs"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden veigar"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden riven"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden darius"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden vi"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden tryndamere"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden kayn"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden illaoi"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden mordekaiser"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden kayn"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden darius"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden vi"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden ziggs"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden tryndamere"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden mordekaiser"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden malphite"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden veigar"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden veigar"></div>
+        </div>
+      </div>
+      <div class="carddiv">
+        <div class="card">
+          <div class="cardfront"></div>
+          <div class="cardback hidden veigar"></div>
+        </div>
+      </div>
+    </div>
     <div class="sider"></div>
   </div>
-  <div class="footer"></div>
+  </div>
 
   <script src="https://kit.fontawesome.com/358f1cd514.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
