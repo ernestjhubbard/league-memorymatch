@@ -1,21 +1,14 @@
 $(document).ready(initializeApp);
 //Global variables
-var gamesPlayed = ('.gamesplayed');
+var gamesPlayed = ('.gamesplayedli');
 var attempts = null;
 var games_played = null;
-var match_maxes = 2;
+var matches_max = 2;
 var matches = null;
-var firstImage;
-var imageSource;
-var secondImage;
-var secondImageSource;
 var firstCardClicked = null;
 var secondCardClicked = null;
-var parent;
-var child;
-var child1;
-var child2;
-//Global Variables
+var cardDiv1;
+var cardDiv2;
 function initializeApp() {
   $('.card').on('click', handleCardClick);
   $('#modalYouWon').hide();
@@ -25,49 +18,63 @@ function showCard() {
   secondCardClicked = null;
 }
 function handleCardClick(event) {
-  console.log(event);
-  parent = $(event.currentTarget);
-  child = parent.find('.cardback');
-  child.removeClass('hidden');
-  if (firstCardClicked === null && secondCardClicked === null) {
-    firstCardClicked = $(event.currentTarget);
-    firstImage = firstCardClicked.find('.cardback');
-    imageSource = firstImage.css('background-image');
-    child1 = child;
+  var found = $(event.currentTarget).find('.disableclick').hasClass('disableclick');
+  if(found === true){
+    return;
   }
-  else if (firstCardClicked !== null && secondCardClicked !== null) {
-    secondCardClicked = $(event.currentTarget);
-    secondImage = secondCardClicked.find('.cardback');
-    secondImageSource = secondImage.css('background-image');
-    child2 = child;
-    if (imageSource === secondImageSource) {
+  if (firstCardClicked !== null && secondCardClicked !== null) {
+    return
+  }
+  if (firstCardClicked === null && secondCardClicked === null) {
+    cardDiv1 = $(event.currentTarget).find('.cardfront');
+    firstCardClicked = $(event.currentTarget).find('.cardback');
+    firstImage = firstCardClicked.css('background-image');
+    firstCardClicked.removeClass('hidden');
+    attempts++;
+  }
+  else if (firstCardClicked !== null) {
+    displayStats()
+    cardDiv2 = $(event.currentTarget).find('.cardfront');
+    secondCardClicked = $(event.currentTarget).find('.cardback')
+    secondImage = secondCardClicked.css('background-image');
+    secondCardClicked.removeClass('hidden');
+    if (secondCardClicked.is(firstCardClicked)) {
+      secondCardClicked = null;
+      return;
+    }
+    if (firstImage === secondImage) {
       console.log('match');
       matches++;
-      if (matches === maxMatches) {
+      setTimeout(function () {
+        secondCardClicked.addClass('disableclick');
+        firstCardClicked.addClass('disableclick');
+        firstCardClicked = null;
+        secondCardClicked = null;
+      }, 1500);
+      if (matches === matches_max) {
         $("#modalYouWon").modal({
           escapeClose: false,
           clickClose: false,
           showClose: false
         });
       }
-    } else if (imageSource !== secondImageSource) {
-      setTimeout(function(){
-        child1.addClass('hidden');
-        child2.addClass('hidden');
-        firstCardClicked = null;
-        secondCardClicked = null;
-      }, 1500);
-    }
+    } setTimeout(function () {
+      firstCardClicked.addClass('hidden');
+      secondCardClicked.addClass('hidden');
+      firstCardClicked = null;
+      secondCardClicked = null;
+
+    }, 1500);
   }
 };
-function calculateAccuracy(){
-var accuracy = matches / attempts;
-return accuracy;
+function calculateAccuracy() {
+  var accuracy = matches / attempts;
+  return accuracy;
 }
-function displayStats(){
+function displayStats() {
   var newAccuracy = calculateAccuracy()
   newAccuracy *= 100;
-  var accuracyClass = $('.accuracy')
-  accuracyClass.text(newAccuracy.toFixed(0) + '%');
-  $('.attempts').text(attempts.toString());
+  var accuracyClass = $('.accuracyli')
+  accuracyClass.text(" " + newAccuracy.toFixed(0) + ' %');
+  $('.attemptsli').text(attempts.toString());
 }
