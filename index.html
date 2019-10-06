@@ -15,15 +15,33 @@
 </head>
 
 <body>
+  <audio id="matchedcard">
+    <source src="Audio/matchedcard.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="cardhover">
+    <source src="Audio/cardhover.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="selection">
+    <source src="Audio/selection.mp3" type="audio/mpeg">
+  </audio>
   <video autoplay muted loop id="video" class="hidden video1">
     <source src="Videos/illaoibackground.mp4">
   </video>
+  <audio loop id="illaoitheme">
+    <source src="Audio/Illaoi.mp3" type="audio/mpeg">
+  </audio>
   <video autoplay muted loop id="video" class="hidden video2">
     <source src="Videos/swainbackground.mp4">
   </video>
+  <audio loop id="swaintheme">
+    <source src="Audio/swain.mp3" type="audio/mpeg">
+  </audio>
   <video autoplay muted loop id="video" class="hidden video3">
     <source src="Videos/dariusbackground.mp4">
   </video>
+  <audio loop id="dariustheme">
+    <source src="Audio/darius.mp3" type="audio/mpeg">
+  </audio>
   <nav class="navbar sticky-top navbar-dark bg-dark">
     <ul class="statbox">
       <div class="ulbox">
@@ -31,7 +49,7 @@
           <li>
             GAMES
           </li>
-          <li class="gamesplayedli">
+          <li class="gamesplayedli">0
           </li>
         </ul>
       </div>
@@ -40,7 +58,7 @@
           <li>
             MATCHES
           </li>
-          <li class="matchesli">
+          <li class="matchesli">0
           </li>
         </ul>
       </div>
@@ -49,7 +67,7 @@
           <li>
             ATTEMPTS
           </li>
-          <li class="attemptsli">
+          <li class="attemptsli">0
           </li>
         </ul>
       </div>
@@ -58,7 +76,7 @@
           <li>
             ACCURACY
           </li>
-          <li class="accuracyli">
+          <li class="accuracyli">0 %
           </li>
         </ul>
       </div>
@@ -81,9 +99,12 @@
           <button class="difficultybutton">
             DIFFICULTY
             <div class="difficultydropdown">
-        <li class="difficulty hidden introbutton introbutton1">ILLAOI</li>
-        <li class="difficulty hidden introbutton introbutton2">SWAIN</li>
-        <li class="difficulty hidden introbutton introbutton3">DARIUS</li>
+        <li class="difficulty1 difficulty hidden introbutton introbutton1">ILLAOI
+        </li>
+        <li class="difficulty2 difficulty hidden introbutton introbutton2">SWAIN
+        </li>
+        <li class="difficulty3 difficulty hidden introbutton introbutton3">DARIUS
+        </li>
       </div>
       </button>
       </li>
@@ -98,9 +119,16 @@
   <div id="myModal" class="modal thismodal modalagain">
     <div class="modal-content">
       <div class="buttoncontainer">
-        <button class="introbutton introbutton1">ILLAOI</button>
-        <button class="introbutton introbutton2">SWAIN</button>
-        <button class="introbutton introbutton3">DARIUS</button>
+        <button class="introbutton introbutton1">ILLAOI<p class="smalltext">EASY</p></button>
+        <button class="introbutton introbutton2">SWAIN<p class="smalltext">MEDIUM</p></button>
+        <button class="introbutton introbutton3">DARIUS<p class="smalltext">HARD</p></button>
+      </div>
+    </div>
+  </div>
+  <div id="victory" class="victory modal thismodal modalagain">
+    <div class="modal-content">
+      <div class="playagainbuttoncontainer buttoncontainer">
+        <div class="playagain"></div>
       </div>
     </div>
   </div>

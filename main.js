@@ -18,6 +18,23 @@ function initializeApp() {
     clickClose: false,
     showClose: false
   });
+
+  $('.introbutton').hover(function () {
+    $('audio#cardhover')[0].currentTime = 0;
+    $('audio#cardhover')[0].play();
+  })
+  $('.introbutton').click(function () {
+    $('audio#selection')[0].currentTime = 0;
+    $('audio#selection')[0].play();
+  })
+  $('.reset').hover(function () {
+    $('audio#cardhover')[0].currentTime = 0;
+    $('audio#cardhover')[0].play();
+  })
+  $('.reset').click(function () {
+    $('audio#selection')[0].currentTime = 0;
+    $('audio#selection')[0].play();
+  })
   $('.resetcurrentgame').on('click', function () {
     switch (difficulty) {
       case 'illaoi':
@@ -35,13 +52,16 @@ function initializeApp() {
   });
   $('.resetfullgame').on('click', function () {
     resetStats();
-    $('.carddiv').remove();
+    $('.card').remove();
     $("#myModal").modal({
       escapeClose: false,
       clickClose: false,
       showClose: false
     });
   });
+  $('.carddiv').on('hover', function () {
+    $('audio#matchedcard').play();
+  })
   $('.uldifficulty').on('mouseenter', function () {
     $('.difficulty').removeClass('hidden');
   })
@@ -54,35 +74,64 @@ function initializeApp() {
   $('.ulreset').on('mouseleave', function () {
     $('.reset').addClass('hidden');
   })
+  $('.difficulty').on('click', function () {
+    ++games_played;
+    displayStats();
+  })
   $('.introbutton1').on('click', function () {
     difficulty = 'illaoi'; //sets correct amount for reset button
-    $('.video2').addClass('hidden');
-    $('.video3').addClass('hidden');
-    $('.video1').removeClass('hidden');
+    stopAndPlaySoundsAndVideo('illaoi');
     $('.jquery-modal').hide();
-    setTimeout(shuffleAndAppend('illaoi'), 500);
+    setTimeout(shuffleAndAppend('illaoi'), 1500);
   })
   $('.introbutton2').on('click', function () {
     difficulty = 'swain';
-    $('.video1').addClass('hidden');
-    $('.video3').addClass('hidden');
-    $('.video2').removeClass('hidden');
+    stopAndPlaySoundsAndVideo('swain');
     $('.jquery-modal').hide();
-    setTimeout(shuffleAndAppend('swain'), 500);
+    setTimeout(shuffleAndAppend('swain'), 1500);
   })
   $('.introbutton3').on('click', function () {
     difficulty = 'darius';
-    $('.video1').addClass('hidden');
-    $('.video2').addClass('hidden');
-    $('.video3').removeClass('hidden');
+    stopAndPlaySoundsAndVideo('darius');
     $('.jquery-modal').hide();
-    setTimeout(shuffleAndAppend('darius'), 500);
+    setTimeout(shuffleAndAppend('darius'), 1500);
+  })
+}
+function hoverSound() {
+  $('.carddiv').hover(function () {
+    $('audio#cardhover')[0].currentTime = 0;
+    $('audio#cardhover')[0].play();
   })
 }
 //--------------------------INITIALIZE APP END--------------------------
 function showCard() {
   firstCardClicked = null;
   secondCardClicked = null;
+}
+function stopAndPlaySoundsAndVideo(champion) {
+  $('.video1').addClass('hidden');
+  $('.video2').addClass('hidden');
+  $('.video3').addClass('hidden');
+  $('audio#illaoitheme')[0].pause()
+  $('audio#swaintheme')[0].pause()
+  $('audio#dariustheme')[0].pause()
+  $('audio#illaoitheme')[0].currentTime = 0;
+  $('audio#swaintheme')[0].currentTime = 0;
+  $('audio#dariustheme')[0].currentTime = 0;
+  switch (champion) {
+    case 'illaoi':
+      $('audio#illaoitheme')[0].play();
+      $('.video1').removeClass('hidden');
+      break;
+    case 'swain':
+      $('audio#swaintheme')[0].play();
+      $('.video2').removeClass('hidden');
+      break;
+    case 'darius':
+      $('audio#dariustheme')[0].play();
+      $('.video3').removeClass('hidden');
+      break;
+  }
 }
 
 //--------------------------CARD CLICK BEGIN--------------------------
@@ -114,6 +163,7 @@ function handleCardClick(event) {
       return;
     }
     if (firstImage === secondImage) {
+      $('audio#matchedcard')[0].play();
       console.log('match');
       ++matches;
       secondCardClicked.addClass('disableclick');
@@ -128,7 +178,7 @@ function handleCardClick(event) {
         secondCardClicked = null;
       }, 1500);
       if (matches === matches_max) {
-        $(".modal").modal({
+        $('.victory').modal({
           escapeClose: false,
           clickClose: false,
           showClose: false
@@ -136,7 +186,9 @@ function handleCardClick(event) {
         resetStats();
       }
     } else {
+      debugger;
       setTimeout(function () {
+        displayStats();
         firstCardClicked.addClass('hidden');
         secondCardClicked.addClass('hidden');
         firstCardClicked = null;
@@ -149,6 +201,7 @@ function handleCardClick(event) {
 
 //--------------------------STATS FUNCTIONS BEGIN--------------------------
 function displayStats() {
+  debugger;
   function calculateAccuracy() {
     return matches / attempts;
   }
@@ -164,9 +217,9 @@ function displayStats() {
   $('.gamesplayedli').text(games_played);
 }
 function resetStats() {
-  $('.attemptsli').text('');
-  $('.accuracyli').text('');
-  $('.matches').text('');
+  $('.attemptsli').text('0');
+  $('.accuracyli').text('0');
+  $('.matches').text('0');
   attempts = 0;
   matches = 0;
   $('.gamesplayedli').text(games_played);
@@ -223,7 +276,7 @@ function shuffleAndAppend(difficulty) {
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);
-        $('.main').append($(`<div class="carddiv"><div class="card" onclick="handleCardClick(event)"><div class="cardfront cardfrontillaoi"></div><div class="${classChosen} cardback hidden">`));
+        $('.main').append($(`<div class="carddiv"><div class="card" onmouseover="hoverSound()" onclick="handleCardClick(event)"><div class="cardfront cardfrontillaoi"></div><div class="${classChosen} cardback hidden">`));
       }
       $('.carddiv').css({ 'width': '16%', 'height': '29%' });
       break;
@@ -235,7 +288,7 @@ function shuffleAndAppend(difficulty) {
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);
-        $('.main').append($(`<div class="carddiv"><div class="card" onclick="handleCardClick(event)"><div class="cardfront cardfrontswain"></div><div class="${classChosen} cardback hidden">`));
+        $('.main').append($(`<div class="carddiv"><div class="card" onmouseover="hoverSound()" onclick="handleCardClick(event)"><div class="cardfront cardfrontswain"></div><div class="${classChosen} cardback hidden">`));
       }
       $('.carddiv').css({ 'width': '14%', 'height': '25%' })
       break;
@@ -245,7 +298,7 @@ function shuffleAndAppend(difficulty) {
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);
-        $('.main').append($(`<div class="carddiv"><div class="card" onclick="handleCardClick(event)"><div class="cardfront cardfrontdarius"></div><div class="${classChosen} cardback hidden">`));
+        $('.main').append($(`<div class="carddiv"><div class="card" onmouseover="hoverSound()" onclick="handleCardClick(event)"><div class="cardfront cardfrontdarius"></div><div class="${classChosen} cardback hidden">`));
       }
       $('.carddiv').css({ 'height': '26%' })
       break;
