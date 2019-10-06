@@ -2,7 +2,9 @@
   font-family: friz;
   src:url(FRQ55.otf);
 }
-
+*{
+  outline:none;
+}
 #video {
   position: absolute;
   top: 50%; 
@@ -35,12 +37,68 @@ body{
   color: rgb(221, 243, 124);
   display: flex;
 }
+button{
+  color: inherit;
+  font-size: inherit;
+  background: none;
+  border: none;
+  font-family: inherit;
+  height: 100%;
+}
+.modal,
+#myModal{
+  z-index: 4000;
+  height: 40%;
+  width: 80%;
+  background-image: url(images/modalback.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.modal-content p{
+  text-align: center;
+  color: green;
+}
+.modal-content{
+  height: 100%;
+  width: 100%;
+}
 
+.buttoncontainer{
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: space-evenly;
+margin-top: 0;
+}
+.introbutton{
+margin: 0;
+height: 100%;
+width: 100%;
+border: none;
+background-color: rgba(0, 0, 0, 0.192);
+border-radius: 4px;
+font-weight: bold;
+font-size: 1.4rem;
+opacity: .6;
+}
+.introbutton:hover{
+background: linear-gradient(to bottom, rgba(0, 0, 0, 0.116), rgba(255, 255, 255, 0.363), rgba(0, 0, 0, 0.116));
+text-align: center;
+}
+li .difficulty:hover{
+text-align: left;
+background: none;
+}
+li .reset:hover{
+text-align: left;
+background: none;
+}
 .restcontainer{
-  margin: 7% 2%;
+  margin-top: 5%;
   display:flex;
   height:60vh;
   width: 100vw;
+  margin-bottom: 20%;
 }
 aside{
   width:25%;
@@ -84,51 +142,76 @@ ul{
   height: 100%;
   width: auto;
 }
+.difficulty{
+  position: relative;
+  top: 20%;
+  height: 8%;
+  vertical-align: middle;
+  text-align: left;
+  font-size: .9em;
+}
+.difficultydropdown{
+  margin-top: 30%;
+}
+.resetdropdown{
+  margin-top: 20%;
+  opacity: .6;
+}
+.reset{
+  position: relative;
+  top: 10%;
+  height: 8%;
+  vertical-align: middle;
+  text-align: left;
+  font-size: .9em;
+}
 li{
   text-align: center;
 }
 .main{
-  width:80%;
+  width:60%;
   display: flex;
   flex-wrap: wrap;
   height:100%;
   border-radius:8px;
   vertical-align:middle;
-  margin: auto;
+  margin:5% auto auto auto;
+  justify-content: space-around;
 }
-.cardcontainer{
-  width:100%;
-  height:100%;
-  border:4px dashed white;
-  border-radius:8px;
-  display:flex;
-  flex-wrap: wrap;
-}
-.row{
-  width: 100%;
-  height: 33%;
-  vertical-align: middle;
-}
-
 .carddiv{
   position:relative;
-  height: 100%;
-  width: 14%;
+  height: 36%;
+  width: 12%;
   border-radius:15px;
   margin: 0;
   float:left;
+  opacity: .9;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
 }
 .carddiv:hover{
-  transform: scale(1.1);
-  z-index: 1000;
+  transform: scale(1.3);
+  z-index: 400;
+}
+.carddiv :checked{
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
 }
 .cardback{
-  z-index: 2;
+  z-index: 1;
 }
 .cardfront{
   z-index:1;
   opacity: 1;
+}
+.cardfrontillaoi{
   background-image:url(images/brawler_relic.png);
+}
+.cardfrontdarius{
+  background-image:url(images/dariusaxe.png);
+}
+.cardfrontswain{
+  background-image:url(images/swaincardback.png);
 }
 .cardfront,
 .cardback{
@@ -147,7 +230,7 @@ li{
   border-radius: 15px;
 }
 .hidden{
-  visibility: hidden;
+  display:none;
 }
 .darius{
   background-image: url(Images/Darius.png);
@@ -187,4 +270,28 @@ li{
 }
 .hide{
   visibility: hidden;
+}
+.masteryi{
+  background-image:url(Images/MasterYi.png);
+}
+.shyvana{
+  background-image:url(Images/Shyvana.png);
+}
+.twitch{
+  background-image:url(Images/Twitch.png);
+}
+.annie{
+  background-image:url(Images/Annie.png);
+}
+.vayne{
+  background-image:url(Images/Vayne.png);
+}
+.lux{
+  background-image:url(Images/Lux.png);
+}
+.teemo{
+  background-image:url(Images/Teemo.png);
+}
+.caitlyn{
+  background-image:url(Images/Caitlyn.png);
 }
