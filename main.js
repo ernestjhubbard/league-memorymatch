@@ -82,6 +82,7 @@ function initializeApp() {
     displayStats();
   })
   $('.introbutton1').on('click', function () {//------------------------------------modal buttons
+    games_played = 0;
     resetStats();
     displayStats();
     difficulty = 'illaoi'; //sets correct amount for reset button
@@ -90,6 +91,7 @@ function initializeApp() {
     setTimeout(shuffleAndAppend('illaoi'), 1500);
   })
   $('.introbutton2').on('click', function () {
+    games_played = 0;
     resetStats();
     displayStats();
     difficulty = 'swain';
@@ -98,6 +100,7 @@ function initializeApp() {
     setTimeout(shuffleAndAppend('swain'), 1500);
   })
   $('.introbutton3').on('click', function () {
+    games_played = 0;
     resetStats();
     displayStats();
     difficulty = 'darius';

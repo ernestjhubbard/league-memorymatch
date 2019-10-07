@@ -4,6 +4,10 @@
 }
 *{
   outline:none;
+  cursor: default;
+}
+*::selection{
+background-color: transparent;
 }
 #video {
   position: absolute;
@@ -48,20 +52,20 @@ button{
   z-index: 4000;
   height: 40%;
   width: 80%;
-  background-image: url(images/modalback.png);
+  background-image: url(Images/Modalbackground.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
 .victory,
 #victory{
-  background-image: url(images/victory.png);
+  background-image: url(Images/Win.png);
   background-size: cover;
   background-repeat: no-repeat;
   height: 40%;
   width: 80%;
 }
 .playagain{
-  background-image: url(images/playagain.png);
+  background-image: url(Images/Playagain.png);
   background-size: contain;
   width: 40%;
   height: 20%;
@@ -238,13 +242,13 @@ li{
   opacity: 1;
 }
 .cardfrontillaoi{
-  background-image:url(images/brawler_relic.png);
+  background-image:url(Images/Illaoicard.png);
 }
 .cardfrontdarius{
-  background-image:url(images/dariusaxe.png);
+  background-image:url(Images/Dariuscard.png);
 }
 .cardfrontswain{
-  background-image:url(images/swaincardback.png);
+  background-image:url(Images/Swaincard.png);
 }
 .cardfront,
 .cardback{
@@ -281,13 +285,13 @@ li{
   background-image: url(Images/Malphite.png);
 }
 .mordekaiser{
-  background-image: url(Images/mordekaiser.png);
+  background-image: url(Images/Mordekaiser.png);
 }
 .nasus{
-  background-image: url(Images/nasus.png);
+  background-image: url(Images/Nasus.png);
 }
 .riven{
-  background-image: url(Images/riven.png);
+  background-image: url(Images/Riven.png);
 }
 .ziggs{
   background-image:url(Images/Ziggs.png);
