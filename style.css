@@ -57,8 +57,8 @@ button{
   background-image: url(images/victory.png);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 70%;
-  width: 40%;
+  height: 40%;
+  width: 80%;
 }
 .playagain{
   background-image: url(images/playagain.png);
@@ -88,9 +88,7 @@ margin-top: 0;
 margin: 0;
 height: 100%;
 width: 100%;
-border: none;
 background-color: rgba(0, 0, 0, 0.192);
-border-radius: 4px;
 font-weight: bold;
 font-size: 1.4rem;
 opacity: .6;
@@ -98,6 +96,22 @@ opacity: .6;
 .introbutton:hover{
 background: linear-gradient(to bottom, rgba(0, 0, 0, 0.116), rgba(255, 255, 255, 0.363), rgba(0, 0, 0, 0.116));
 text-align: center;
+}
+#playagain{
+    color: white;
+    margin: auto auto 0;
+    height: 7%;
+    width: 20%;
+    width: 23%;
+    order: none;
+    background-color: rgb(184, 14, 14);
+    border-top: 4px solid rgb(204, 105, 105);
+    border-bottom: 4px solid rgb(90, 7, 7);
+    border-right: 4px solid red;
+    border-left: 4px solid red;
+    text-align: center;
+    font-weight: bold;
+    font-size: .9rem;
 }
 li .difficulty:hover{
 text-align: left;
@@ -185,6 +199,7 @@ ul{
 }
 li{
   text-align: center;
+  background-color: transparent!important;
 }
 .main{
   width:60%;
