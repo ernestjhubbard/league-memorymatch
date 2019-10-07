@@ -129,16 +129,22 @@ function stopAndPlaySoundsAndVideo(champion) {//--------------------------------
   $('audio#dariustheme')[0].currentTime = 0;
   switch (champion) {
     case 'illaoi':
+      $('audio#illaoitheme').prop('volume', 0.5);
       $('audio#illaoitheme')[0].play();
       $('.video1').removeClass('hidden');
       break;
     case 'swain':
+      $('audio#swaintheme').prop('volume', 0.5);
       $('audio#swaintheme')[0].play();
       $('.video2').removeClass('hidden');
       break;
     case 'darius':
+      $('audio#dariustheme').prop('volume', 0.5);
       $('audio#dariustheme')[0].play();
       $('.video3').removeClass('hidden');
+      break;
+    case 'victory':
+      $('audio#victory')[0].play();
       break;
   }
 }
@@ -153,6 +159,8 @@ function handleCardClick(event) {
     return
   }//---------------------------------------------------------------------------------prevent multiple clicks end
   if (firstCardClicked === null && secondCardClicked === null) {//--------------------first card check
+    $('audio#selection')[0].currentTime = 0;
+    $('audio#selection')[0].play();
     cardDiv1 = $(event.currentTarget).find('.cardfront');
     firstCardClicked = $(event.currentTarget).find('.cardback');
     firstCardSibling = $(event.currentTarget).find('.cardfront');
@@ -161,6 +169,8 @@ function handleCardClick(event) {
     attempts++;
   }
   else if (firstCardClicked !== null) {//--------------------------------------------second card check
+    $('audio#selection')[0].currentTime = 0;
+    $('audio#selection')[0].play();
     cardDiv2 = $(event.currentTarget).find('.cardfront');
     secondCardClicked = $(event.currentTarget).find('.cardback')
     secondCardSibling = $(event.currentTarget).find('.cardfront')
@@ -171,6 +181,8 @@ function handleCardClick(event) {
       return;
     }
     if (firstImage === secondImage) {//----------------------------------------------check if match
+      $('audio#matchedcard')[0].pause();
+      $('audio#matchedcard')[0].currentTime = 0;
       $('audio#matchedcard')[0].play();
       console.log('match');
       ++matches;
@@ -186,11 +198,13 @@ function handleCardClick(event) {
         secondCardClicked = null;
       }, 1500);
       if (matches === matches_max) {//-----------------------------------------------match win
+        stopAndPlaySoundsAndVideo('victory');
         $('.victory').modal({
           escapeClose: false,
           clickClose: false,
           showClose: false
         });
+        ++games_played;
         resetStats();
       }
     } else {//-----------------------------------------------------------------------failed match
