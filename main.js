@@ -12,14 +12,13 @@ var cardDiv2;
 
 //--------------------------INITIALIZE APP BEGIN--------------------------
 function initializeApp() {
-  var difficulty;
-  $("#myModal").modal({
+  var difficulty;//----------------------------------------------------------------store difficulty for switch
+  $("#myModal").modal({//----------------------------------------------------------initial modal
     escapeClose: false,
     clickClose: false,
     showClose: false
   });
-
-  $('.introbutton').hover(function () {
+  $('.introbutton').hover(function () {//------------------------------------------hover sounds buttons
     $('audio#cardhover')[0].currentTime = 0;
     $('audio#cardhover')[0].play();
   })
@@ -35,7 +34,16 @@ function initializeApp() {
     $('audio#selection')[0].currentTime = 0;
     $('audio#selection')[0].play();
   })
-  $('.resetcurrentgame').on('click', function () {
+  $('#playagain').on('click', function () {
+    $("#myModal").modal({
+      escapeClose: false,
+      clickClose: false,
+      showClose: false
+    });
+  })
+  $('.resetcurrentgame').on('click', function () {//-------------------------------reset current
+    ++games_played;
+    resetStats();
     switch (difficulty) {
       case 'illaoi':
         shuffleAndAppend('illaoi');
@@ -47,10 +55,8 @@ function initializeApp() {
         shuffleAndAppend('darius');
         break;
     }
-    ++games_played;
-    resetStats();
   });
-  $('.resetfullgame').on('click', function () {
+  $('.resetfullgame').on('click', function () {//-----------------------------------reset full
     resetStats();
     $('.card').remove();
     $("#myModal").modal({
@@ -59,10 +65,7 @@ function initializeApp() {
       showClose: false
     });
   });
-  $('.carddiv').on('hover', function () {
-    $('audio#matchedcard').play();
-  })
-  $('.uldifficulty').on('mouseenter', function () {
+  $('.uldifficulty').on('mouseenter', function () {//-------------------------------hover dropdown
     $('.difficulty').removeClass('hidden');
   })
   $('.uldifficulty').on('mouseleave', function () {
@@ -78,26 +81,35 @@ function initializeApp() {
     ++games_played;
     displayStats();
   })
-  $('.introbutton1').on('click', function () {
+  $('.introbutton1').on('click', function () {//------------------------------------modal buttons
+    games_played = 0;
+    resetStats();
+    displayStats();
     difficulty = 'illaoi'; //sets correct amount for reset button
     stopAndPlaySoundsAndVideo('illaoi');
     $('.jquery-modal').hide();
     setTimeout(shuffleAndAppend('illaoi'), 1500);
   })
   $('.introbutton2').on('click', function () {
+    games_played = 0;
+    resetStats();
+    displayStats();
     difficulty = 'swain';
     stopAndPlaySoundsAndVideo('swain');
     $('.jquery-modal').hide();
     setTimeout(shuffleAndAppend('swain'), 1500);
   })
   $('.introbutton3').on('click', function () {
+    games_played = 0;
+    resetStats();
+    displayStats();
     difficulty = 'darius';
     stopAndPlaySoundsAndVideo('darius');
     $('.jquery-modal').hide();
     setTimeout(shuffleAndAppend('darius'), 1500);
   })
 }
-function hoverSound() {
+function hoverSound() {//-------------------------------------------------------------sound on card hover
   $('.carddiv').hover(function () {
     $('audio#cardhover')[0].currentTime = 0;
     $('audio#cardhover')[0].play();
@@ -108,7 +120,7 @@ function showCard() {
   firstCardClicked = null;
   secondCardClicked = null;
 }
-function stopAndPlaySoundsAndVideo(champion) {
+function stopAndPlaySoundsAndVideo(champion) {//--------------------------------------video and audio control
   $('.video1').addClass('hidden');
   $('.video2').addClass('hidden');
   $('.video3').addClass('hidden');
@@ -120,31 +132,38 @@ function stopAndPlaySoundsAndVideo(champion) {
   $('audio#dariustheme')[0].currentTime = 0;
   switch (champion) {
     case 'illaoi':
+      $('audio#illaoitheme').prop('volume', 0.5);
       $('audio#illaoitheme')[0].play();
       $('.video1').removeClass('hidden');
       break;
     case 'swain':
+      $('audio#swaintheme').prop('volume', 0.5);
       $('audio#swaintheme')[0].play();
       $('.video2').removeClass('hidden');
       break;
     case 'darius':
+      $('audio#dariustheme').prop('volume', 0.5);
       $('audio#dariustheme')[0].play();
       $('.video3').removeClass('hidden');
       break;
+    case 'victory':
+      $('audio#victory')[0].play();
+      break;
   }
 }
-
 //--------------------------CARD CLICK BEGIN--------------------------
 function handleCardClick(event) {
   console.log(event.currentTarget)
-  var found = $(event.currentTarget).find('.disableclick').hasClass('disableclick');
+  var found = $(event.currentTarget).find('.disableclick').hasClass('disableclick'); //prevent multiple clicks begin
   if (found === true) {
     return;
   }
   if (firstCardClicked !== null && secondCardClicked !== null) {
     return
-  }
-  if (firstCardClicked === null && secondCardClicked === null) {
+  }//---------------------------------------------------------------------------------prevent multiple clicks end
+  if (firstCardClicked === null && secondCardClicked === null) {//--------------------first card check
+    $('audio#selection')[0].currentTime = 0;
+    $('audio#selection')[0].play();
     cardDiv1 = $(event.currentTarget).find('.cardfront');
     firstCardClicked = $(event.currentTarget).find('.cardback');
     firstCardSibling = $(event.currentTarget).find('.cardfront');
@@ -152,17 +171,21 @@ function handleCardClick(event) {
     firstCardClicked.removeClass('hidden');
     attempts++;
   }
-  else if (firstCardClicked !== null) {
+  else if (firstCardClicked !== null) {//--------------------------------------------second card check
+    $('audio#selection')[0].currentTime = 0;
+    $('audio#selection')[0].play();
     cardDiv2 = $(event.currentTarget).find('.cardfront');
     secondCardClicked = $(event.currentTarget).find('.cardback')
     secondCardSibling = $(event.currentTarget).find('.cardfront')
     secondImage = secondCardClicked.css('background-image');
     secondCardClicked.removeClass('hidden');
-    if (secondCardClicked.is(firstCardClicked)) {
+    if (secondCardClicked.is(firstCardClicked)) {//----------------------------------prevent clicking same card
       secondCardClicked = null;
       return;
     }
-    if (firstImage === secondImage) {
+    if (firstImage === secondImage) {//----------------------------------------------check if match
+      $('audio#matchedcard')[0].pause();
+      $('audio#matchedcard')[0].currentTime = 0;
       $('audio#matchedcard')[0].play();
       console.log('match');
       ++matches;
@@ -177,16 +200,17 @@ function handleCardClick(event) {
         firstCardClicked = null;
         secondCardClicked = null;
       }, 1500);
-      if (matches === matches_max) {
+      if (matches === matches_max) {//-----------------------------------------------match win
+        stopAndPlaySoundsAndVideo('victory');
         $('.victory').modal({
           escapeClose: false,
           clickClose: false,
           showClose: false
         });
+        ++games_played;
         resetStats();
       }
-    } else {
-      debugger;
+    } else {//-----------------------------------------------------------------------failed match
       setTimeout(function () {
         displayStats();
         firstCardClicked.addClass('hidden');
@@ -200,12 +224,11 @@ function handleCardClick(event) {
 //--------------------------CARD CLICK END--------------------------
 
 //--------------------------STATS FUNCTIONS BEGIN--------------------------
-function displayStats() {
-  debugger;
+function displayStats() {//---------------------------------------------------------update score banner
   function calculateAccuracy() {
     return matches / attempts;
   }
-  var newAccuracy = calculateAccuracy();
+  var newAccuracy = calculateAccuracy();//------------------------------------------accuracy
   if (isNaN(newAccuracy)) {
     newAccuracy = 0;
   }
@@ -216,10 +239,10 @@ function displayStats() {
   $('.matchesli').text(matches);
   $('.gamesplayedli').text(games_played);
 }
-function resetStats() {
+function resetStats() {//-----------------------------------------------------------reset stats
   $('.attemptsli').text('0');
   $('.accuracyli').text('0');
-  $('.matches').text('0');
+  $('.matchesli').text('0');
   attempts = 0;
   matches = 0;
   $('.gamesplayedli').text(games_played);
@@ -233,46 +256,29 @@ function resetStats() {
 function shuffleAndAppend(difficulty) {
   $('.carddiv').remove();
   var classArray = [
-    'illaoi',
-    'illaoi',
-    'darius',
-    'darius',
-    'riven',
-    'riven',
-    'veigar',
-    'veigar',
-    'ziggs',
-    'ziggs',
-    'mordekaiser',
-    'mordekaiser',
-    'vi',
-    'vi',
-    'kayn',
-    'kayn',
-    'shyvana',
-    'shyvana',
-    'teemo',
-    'teemo',
-    'caitlyn',
-    'caitlyn',
-    'lux',
-    'lux',
-    'masteryi',
-    'masteryi',
-    'vayne',
-    'vayne',
-    'annie',
-    'annie',
-    'twitch',
-    'twitch'
+    'illaoi', 'illaoi',
+    'darius', 'darius',
+    'riven', 'riven',
+    'veigar', 'veigar',
+    'ziggs', 'ziggs',
+    'mordekaiser', 'mordekaiser',
+    'vi', 'vi',
+    'kayn', 'kayn',
+    'shyvana', 'shyvana',
+    'teemo', 'teemo',
+    'caitlyn', 'caitlyn',
+    'lux', 'lux',
+    'masteryi', 'masteryi',
+    'vayne', 'vayne',
+    'annie', 'annie',
+    'twitch', 'twitch'
   ];
   var newLength;
   switch (difficulty) {
     case 'illaoi':
       $('li').css('color', 'rgb(221, 243, 124)');
       matches_max = 12;
-      newLength = classArray.length - 8;
-      classArray.length = newLength;
+      classArray.length -= 8;
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);
@@ -305,3 +311,11 @@ function shuffleAndAppend(difficulty) {
   }
 }
 //--------------------------DYNAMIC AND SHUFFLE END--------------------------
+//--------------------------DEBUGGING FUNCTIONS--------------------------
+function cardReveal() {
+  $('.cardback').removeClass('hidden');
+}
+function cardOpacity() {
+  $('.cardback').removeClass('hidden');
+  $('.cardback').css('opacity', '.4');
+}
