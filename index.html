@@ -11,11 +11,69 @@
   <script src="https://kit.fontawesome.com/358f1cd514.js" crossorigin="anonymous"></script>
   <script src="main.js"></script>
   <title>Document</title>
+
 </head>
 
 <body>
+  <video autoplay loop muted id="video">
+    <!-- <source src="Images/illaoibackground.mp4"> -->
+  </video>
+  <nav class="navbar sticky-top navbar-dark bg-dark">
+    <ul class="statbox">
+      <div class="ulbox">
+        <ul class="box">
+          <li>
+            GAMES
+          </li>
+          <li class="matchesli">
+          </li>
+        </ul>
+      </div>
+      <div class="ulbox">
+        <ul class="box">
+          <li>
+            MATCHES
+          </li>
+          <li class="matchesli">
+          </li>
+        </ul>
+      </div>
+      <div class="ulbox">
+        <ul class="box">
+          <li>
+            ATTEMPTS
+          </li>
+          <li class="attemptsli">
+          </li>
+        </ul>
+      </div>
+      <div class="ulbox">
+        <ul class="box">
+          <li>
+            ACCURACY
+          </li>
+          <li class="accuracyli">
+          </li>
+        </ul>
+      </div>
+      <div class="ulbox">
+        <ul class="box">
+          <li class="resetli">
+            RESET
+          </li>
+        </ul>
+      </div>
+      <div class="ulbox">
+        <ul class="difficultyli">
+          <div class="box">
+            DIFFICULTY
+        </ul>
+      </div>
+    </ul>
+  </nav>
+
   <header>
-    header
+
   </header>
   <div id="modalYouWon" class="modal">
     <p style="font-size: 32px">You won!<br>Play again?</p>
@@ -25,151 +83,137 @@
     </div>
   </div>
   <div class="restcontainer">
-    <aside>
-      <div class="paradiv">
-        <p>stats</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
-      <div class="statbox">
-        <p>statbox</p>
-      </div>
-    </aside>
-    <main>
-      <div class="container">
-        <div class="row1">
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback1"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback2"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback3"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback4"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback5"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback6"></div>
-            </div>
+    <!-- <aside>
+    </aside> -->
+    <div class="main">
+      <div class="row1 row">
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden illaoi"></div>
           </div>
         </div>
-        <div class="row2">
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback7"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback8"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback9"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback10"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback11"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback12"></div>
-            </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden ziggs"></div>
           </div>
         </div>
-        <div class="row3">
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback13"></div>
-            </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden veigar"></div>
           </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback14"></div>
-            </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden riven"></div>
           </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback15"></div>
-            </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden darius"></div>
           </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback16"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback17"></div>
-            </div>
-          </div>
-          <div class="carddiv">
-            <div class="card">
-              <div class="cardfront"></div>
-              <div class="cardback cardback18"></div>
-            </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden vi"></div>
           </div>
         </div>
       </div>
-    </main>
-    <div class="sider"></div>
+      <div class="row2 row">
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden tryndamere"></div>
+          </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden kayn"></div>
+          </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden illaoi"></div>
+          </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden mordekaiser"></div>
+          </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden kayn"></div>
+          </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden darius"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row3 row">
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden vi"></div>
+          </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden ziggs"></div>
+          </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden tryndamere"></div>
+          </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden mordekaiser"></div>
+          </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden malphite"></div>
+          </div>
+        </div>
+        <div class="carddiv">
+          <div class="card">
+            <div class="cardfront"></div>
+            <div class="cardback hidden riven"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="sider"></div> -->
   </div>
-  <div class="footer"></div>
+  </div>
 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/358f1cd514.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>

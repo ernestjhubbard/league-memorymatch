@@ -1,17 +1,49 @@
+@font-face{
+  font-family: friz;
+  src:url(FRQ55.otf);
+}
+
+#video {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  min-width: 100%; 
+  min-height: 100%; 
+  width: auto; 
+  height: auto;
+  z-index: -1000; 
+  overflow: hidden;
+  object-fit: cover;
+}
 body{
-  background-color: tomato;
-  font-size:20px;
+  background: black;
+  font-size:100%;
   margin:0;
   overflow:hidden;
+  font-family: 'friz';
+  height: 100vh;
+  min-width: 800px;
+  min-height: 600px;
 }
-header{
-  border: 4px solid red;
-  height:10vh;
-  width:100vw;
+.navbar{
+  background: black;
+  opacity: .5;
+  height: 7vh;
+  font-size: 1.2rem;
+  color: rgb(221, 243, 124);
+  display: flex;
+}
+
+.restcontainer{
+  margin: 7% 2%;
+  display:flex;
+  height:60vh;
+  width: 100vw;
 }
 aside{
-  width:25vw;
-  border:4px solid cyan;
+  width:25%;
   border-radius:8px;
   height:75vh;
   display:flex;
@@ -24,23 +56,47 @@ aside{
   border-radius:8px;
 }
 .statbox{
-  border:4px solid black;
-  border-radius:8px;
-  height:9vh;
-  width:100%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+.ulbox:hover{
+background: linear-gradient(to bottom, rgba(0, 0, 0, 0.418), rgba(255, 255, 255, 0.479));
+text-align: center;
+}
+.box{
+  padding: 0;
+  width: auto;
+}
+.ulbox{
+  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
   margin: 0;
 }
-main{
-  width:75vw;
-  height:75vh;
-  border:4px solid violet;
-  display:flex;
+ul{
+  list-style: none;
+  vertical-align: middle;
+  text-align: center;
+  height: 100%;
+  width: auto;
+}
+li{
+  text-align: center;
+}
+.main{
+  width:80%;
+  display: flex;
+  flex-wrap: wrap;
+  height:100%;
   border-radius:8px;
+  vertical-align:middle;
+  margin: auto;
 }
-.restcontainer{
-  display:flex;
-}
-.container{
+.cardcontainer{
   width:100%;
   height:100%;
   border:4px dashed white;
@@ -48,59 +104,87 @@ main{
   display:flex;
   flex-wrap: wrap;
 }
-.sider{
-  width:25vw;
-  height:75vh;
-  border:4px solid limegreen;
-  border-radius:8px;
-}
-.footer{
-  height: 15vh;
-  width: 100vw;
-  border: 4px solid magenta;
-}
-.row1,
-.row2,
-.row3{
-  height: 20%;
+.row{
   width: 100%;
-  margin:auto 0;
-  display: flex;
-  justify-content:space-evenly;
+  height: 33%;
+  vertical-align: middle;
 }
+
 .carddiv{
   position:relative;
   height: 100%;
-  width: 15%;
-  border-radius:5px;
+  width: 14%;
+  border-radius:15px;
+  margin: 0;
+  float:left;
+}
+.carddiv:hover{
+  transform: scale(1.1);
+  z-index: 1000;
+}
+.cardback{
+  z-index: 2;
 }
 .cardfront{
-  background-image:url(One_Piece/Luffy/jollyroger.png);
   z-index:1;
+  opacity: 1;
+  background-image:url(images/brawler_relic.png);
 }
 .cardfront,
 .cardback{
+  border-radius:15px;
   height: 100%;
   width: 100%;
-  border-radius:5px;
-  background-color: black;
   background-size:contain;
   background-repeat:no-repeat;
   background-position:center;
   position:absolute;
 }
+.disableclick{
+
+}
+.card{
+  border-radius: 15px;
+}
 .hidden{
-  display:none;
+  visibility: hidden;
 }
-.cardback1{
-  background-image: url(One_Piece/Luffy/luffybakaface.jpg);
+.darius{
+  background-image: url(Images/Darius.png);
 }
-.cardback2{
-  background-image: url(One_Piece/Luffy/luffybakaface.jpg);
+.heimerdinger{
+  background-image: url(Images/Heimerdinger.png);
 }
-.cardback3{
-  background-image: url(One_Piece/Luffy/luffymad.jpg);
+.illaoi{
+  background-image: url(Images/Illaoi.png);
 }
-.cardback4{
-  background-image: url(One_Piece/Luffy/gear4luffy.jpg);
+.kayn{
+  background-image: url(Images/Kayn.png);
+}
+.malphite{
+  background-image: url(Images/Malphite.png);
+}
+.mordekaiser{
+  background-image: url(Images/mordekaiser.png);
+}
+.nasus{
+  background-image: url(Images/nasus.png);
+}
+.riven{
+  background-image: url(Images/riven.png);
+}
+.ziggs{
+  background-image:url(Images/Ziggs.png);
+}
+.veigar{
+  background-image:url(Images/Veigar.png);
+}
+.vi{
+  background-image:url(Images/Vi.png);
+}
+.tryndamere{
+  background-image:url(Images/Tryndamere.png);
+}
+.hide{
+  visibility: hidden;
 }
