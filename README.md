@@ -15,4 +15,4 @@ A memory matching game with sounds and video from the video game
 
 # Try it Live
 
-Here at league-match.ejhcodes.com
+Here at (http://league-match.ejhcodes.com)
