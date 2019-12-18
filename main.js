@@ -278,8 +278,7 @@ function shuffleAndAppend(difficulty) {
     case 'illaoi':
       $('li').css('color', 'rgb(221, 243, 124)');
       matches_max = 12;
-      newLength = classArray.length - 8;
-      classArray.length = newLength;
+      classArray.length -= 8;
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);

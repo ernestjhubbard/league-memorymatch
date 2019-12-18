@@ -2,7 +2,9 @@ $(document).ready(initializeApp);
 
 
 function initializeApp() {
-  let matchLayout = new MatchLayout()
+  let matchLayout = new MatchLayout;
+  let modal = new Modal;
+  modal.render();
   matchLayout.render();
 }
 class MatchLayout {
@@ -22,19 +24,15 @@ class MatchLayout {
     this.difficultyButton = $('<button>').addClass('difficultybutton');
     this.difficultyDropdown = $('<div>').addClass('difficultydropdown');
     this.difficulty1 = $('<div>').addClass('difficulty1 difficulty hidden introbutton introbutton1');
-    this.difficulty1 = $('<div>').addClass('difficulty2 difficulty hidden introbutton introbutton1');
-    this.difficulty1 = $('<div>').addClass('difficulty3 difficulty hidden introbutton introbutton1');
+    this.difficulty2 = $('<div>').addClass('difficulty2 difficulty hidden introbutton introbutton2');
+    this.difficulty3 = $('<div>').addClass('difficulty3 difficulty hidden introbutton introbutton3');
     this.restContainer = $('<div>').addClass('restcontainer');
     this.main = $('<div>').addClass('main');
   }
   render() {
-    let card = new Card
     this.body.append(this.nav);
     this.body.append(this.restContainer);
     this.restContainer.append(this.main);
-    $('.card').on('click', function () {
-      card.handleCardClick(event);
-    });
     $('.navbar').append(this.statBox);
     for (var ulbox = 0; ulbox < 3; ulbox++) {
       $('.statbox').append($('<div>')
@@ -68,7 +66,6 @@ class MatchLayout {
   }
   difficultyClickHandler() {
   }
-
 }
 
 

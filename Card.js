@@ -1,8 +1,4 @@
-$(document).ready(initializeApp);
 
-function initializeApp() {
-  let card = new Card;
-}
 class Card {
   constructor(difficulty) {
     this.attempts = 0;
@@ -17,7 +13,15 @@ class Card {
     this.allLis = $('li');
     this.main = $('.main');
     this.handleCardClick = this.handleCardClick.bind(this);
+    this.timeoutCard = this.timeoutCard.bind(this);
+    this.timeoutCardMatch = this.timeoutCardMatch.bind(this);
     this.render(this.difficulty);
+    this.firstCardClicked = null;
+    this.secondCardClicked = null;
+    this.firstCardSibling = null;
+    this.secondCardSibling = null;
+    this.firstImage = null;
+    this.secondImage = null;
   }
   render(difficulty) {
     let classArray = [
@@ -42,13 +46,13 @@ class Card {
     switch (difficulty) {
       case 'illaoi':
         $('li').css('color', 'rgb(221, 243, 124)');
-        this.matchesMax = 12;
+        Stats.matchesMax = 12;
         classArray.length = classArray.length - 8;
         while (classArray.length) {
           let randomChamp = Math.floor(Math.random() * classArray.length);
           let classChosen = classArray.splice(randomChamp, 1);
           $('.main').append
-            ($('<div>').addClass('carddiv').append
+            ($('<div>').addClass('carddiv').delegate('.card', 'click', this.handleCardClick).append
               ($('<div>').addClass('card').append
                 ($('<div>').addClass('cardfront cardfrontillaoi'),
                   ($('<div>').addClass(`cardback hidden ${classChosen}`)))
@@ -57,13 +61,13 @@ class Card {
         break;
       case 'swain':
         $('li').css('color', 'rgb(243, 105, 105)');
-        this.matchesMax = 14;
+        Stats.matchesMax = 14;
         classArray.length = classArray.length - 4;
         while (classArray.length) {
           let randomChamp = Math.floor(Math.random() * classArray.length);
           let classChosen = classArray.splice(randomChamp, 1);
           $('.main').append
-            ($('<div>').addClass('carddiv').append
+            ($('<div>').addClass('carddiv').delegate('.card', 'click', this.handleCardClick).append
               ($('<div>').addClass('card').append
                 ($('<div>').addClass('cardfront cardfrontswain'),
                   ($('<div>').addClass(`cardback hidden ${classChosen}`)))
@@ -72,12 +76,12 @@ class Card {
         break;
       case 'darius':
         $('li').css('color', '#ccc3c3');
-        this.matchesMax = 16;
+        Stats.matchesMax = 16;
         while (classArray.length) {
           let randomChamp = Math.floor(Math.random() * classArray.length);
           let classChosen = classArray.splice(randomChamp, 1);
           $('.main').append
-            ($('<div>').addClass('carddiv').append
+            ($('<div>').addClass('carddiv').delegate('.card', 'click', this.handleCardClick).append
               ($('<div>').addClass('card').append
                 ($('<div>').addClass('cardfront cardfrontdarius'),
                   ($('<div>').addClass(`cardback hidden ${classChosen}`)))
@@ -87,76 +91,74 @@ class Card {
     }
   }
   handleCardClick(event) {
-    debugger;
-    console.log($(event.currentTarget));
+    console.log(event.currentTarget);
     let gamesPlayed = ('.gamesplayedli');
-    let firstCardClicked = null;
-    let secondCardClicked = null;
-    let firstCardSibling = null;
-    let secondCardSibling = null;
     let found = $(event.currentTarget).find('.disableclick').hasClass('disableclick'); //prevent multiple clicks begin
     if (found === true) {
       return;
     }
     if (this.firstCardClicked !== null && this.secondCardClicked !== null) {
       return
-    }//---------------------------------------------------------------------------------prevent multiple clicks end
-    if (firstCardClicked === null && secondCardClicked === null) {//--------------------first card check
-      $('audio#selection')[0].currentTime = 0;
-      $('audio#selection')[0].play();
-      firstCardClicked = $(event.currentTarget).find('.cardback');
-      firstCardSibling = $(event.currentTarget).find('.cardfront');
-      firstImage = firstCardClicked.css('background-image');
-      firstCardClicked.removeClass('hidden');
-      attempts++;
     }
-    else if (firstCardClicked !== null) {//--------------------------------------------second card check
-      $('audio#selection')[0].currentTime = 0;
-      $('audio#selection')[0].play();
-      secondCardClicked = $(event.currentTarget).find('.cardback')
-      secondCardSibling = $(event.currentTarget).find('.cardfront')
-      secondImage = secondCardClicked.css('background-image');
-      secondCardClicked.removeClass('hidden');
-      if (secondCardClicked.is(firstCardClicked)) {//----------------------------------prevent clicking same card
-        secondCardClicked = null;
+    //---------------------------------------------------------------------------------prevent multiple clicks end
+    if (this.firstCardClicked === null && this.secondCardClicked === null) {//--------------------first card check
+      // $('audio#selection')[0].currentTime = 0;
+      // $('audio#selection')[0].play();
+      this.firstCardClicked = $(event.currentTarget).find('.cardback');
+      this.firstCardSibling = $(event.currentTarget).find('.cardfront');
+      this.firstImage = this.firstCardClicked.css('background-image');
+      this.firstCardClicked.removeClass('hidden');
+      Stats.attempts++;
+    }
+    else if (this.firstCardClicked !== null) {//--------------------------------------------second card check
+      // $('audio#selection')[0].currentTime = 0;
+      // $('audio#selection')[0].play();
+      this.secondCardClicked = $(event.currentTarget).find('.cardback')
+      this.secondCardSibling = $(event.currentTarget).find('.cardfront')
+      this.secondImage = this.secondCardClicked.css('background-image');
+      this.secondCardClicked.removeClass('hidden');
+      Stats.attempts++;
+      if (this.secondCardClicked.is(this.firstCardClicked)) {//----------------------------------prevent clicking same card
+        this.secondCardClicked = null;
         return;
       }
-      if (firstImage === secondImage) {//----------------------------------------------check if match
-        $('audio#matchedcard')[0].pause();
-        $('audio#matchedcard')[0].currentTime = 0;
-        $('audio#matchedcard')[0].play();
-        console.log('match');
-        ++this.matches;
-        secondCardClicked.addClass('disableclick');
-        firstCardClicked.addClass('disableclick');
-        displayStats();
-        setTimeout(function () {
-          firstCardClicked.addClass('hidden');
-          firstCardSibling.addClass('hidden');
-          secondCardClicked.addClass('hidden');
-          secondCardSibling.addClass('hidden');
-          firstCardClicked = null;
-          secondCardClicked = null;
-        }, 1500);
-        if (this.matches === this.matchesMax) {//-----------------------------------------------match win
+      if (this.firstImage === this.secondImage) {//----------------------------------------------check if match
+        // $('audio#matchedcard')[0].pause();
+        // $('audio#matchedcard')[0].currentTime = 0;
+        // $('audio#matchedcard')[0].play();
+        ++Stats.matches;
+        this.secondCardClicked.addClass('disableclick');
+        this.firstCardClicked.addClass('disableclick');
+        new Stats('display');
+        setTimeout(this.timeoutCardMatch, 1500);
+        if (Stats.matches === Stats.matchesMax) {//-----------------------------------------------match win
           stopAndPlaySoundsAndVideo('victory');
           $('.victory').modal({
             escapeClose: false,
             clickClose: false,
             showClose: false
           });
-          ++games_played;
-          resetStats();
+          ++Stats.gamesPlayed;
+          new Stats('reset');
         }
       } else {//-----------------------------------------------------------------------failed match
-        setTimeout(function () {
-          displayStats();
-          this.firstCardClicked.addClass('hidden');
-          secondCardClicked.addClass('hidden');
-          this.firstCardClicked = null;
-          secondCardClicked = null;
-        }, 1500);
+        setTimeout(this.timeoutCard, 1500);
+        new Stats('display');
       }
     }
+  }
+  timeoutCard() {
+    this.firstCardClicked.addClass('hidden');
+    this.secondCardClicked.addClass('hidden');
+    this.firstCardClicked = null;
+    this.secondCardClicked = null;
+  }
+  timeoutCardMatch() {
+    this.firstCardClicked.addClass('hidden');
+    this.firstCardSibling.addClass('hidden');
+    this.secondCardClicked.addClass('hidden');
+    this.secondCardSibling.addClass('hidden');
+    this.firstCardClicked = null;
+    this.secondCardClicked = null;
   }
 }
