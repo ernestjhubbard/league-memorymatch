@@ -46,7 +46,6 @@ class Modal {
     this.intro3.text("DARIUS").append(this.intro3p.text("HARD"));
     this.callModal('intro');
     $('.introbutton1').on('click', function () {
-      console.log(Card.attempts)
       new Events('intro1');
     });
     $('.introbutton2').on('click', function () {

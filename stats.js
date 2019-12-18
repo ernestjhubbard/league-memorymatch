@@ -5,7 +5,6 @@ function startStats() {
 }
 class Stats {
   constructor(stats) {
-    console.log('Card.attempts')
     this.stats = stats;
     this.attempts = 0;
     this.gamesPlayed = null;
