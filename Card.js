@@ -91,7 +91,6 @@ class Card {
     }
   }
   handleCardClick(event) {
-    console.log(event.currentTarget);
     let gamesPlayed = ('.gamesplayedli');
     let found = $(event.currentTarget).find('.disableclick').hasClass('disableclick'); //prevent multiple clicks begin
     if (found === true) {
