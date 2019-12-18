@@ -11,3 +11,8 @@ A memory matching game with sounds and video from the video game
 
 # Preview
 
+![alt text](preview.png)
+
+# Try it Live
+
+Here at league-match.ejhcodes.com
