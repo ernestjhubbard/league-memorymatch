@@ -15,9 +15,33 @@
 </head>
 
 <body>
-  <video autoplay loop muted id="video">
-    <!-- <source src="Images/illaoibackground.mp4"> -->
+  <audio id="matchedcard">
+    <source src="Audio/matchedcard.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="cardhover">
+    <source src="Audio/cardhover.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="selection">
+    <source src="Audio/selection.mp3" type="audio/mpeg">
+  </audio>
+  <video autoplay muted loop id="video" class="hidden video1">
+    <source src="Videos/illaoibackground.mp4">
   </video>
+  <audio loop id="illaoitheme">
+    <source src="Audio/Illaoi.mp3" type="audio/mpeg">
+  </audio>
+  <video autoplay muted loop id="video" class="hidden video2">
+    <source src="Videos/swainbackground.mp4">
+  </video>
+  <audio loop id="swaintheme">
+    <source src="Audio/swain.mp3" type="audio/mpeg">
+  </audio>
+  <video autoplay muted loop id="video" class="hidden video3">
+    <source src="Videos/dariusbackground.mp4">
+  </video>
+  <audio loop id="dariustheme">
+    <source src="Audio/darius.mp3" type="audio/mpeg">
+  </audio>
   <nav class="navbar sticky-top navbar-dark bg-dark">
     <ul class="statbox">
       <div class="ulbox">
@@ -25,7 +49,7 @@
           <li>
             GAMES
           </li>
-          <li class="matchesli">
+          <li class="gamesplayedli">0
           </li>
         </ul>
       </div>
@@ -34,7 +58,7 @@
           <li>
             MATCHES
           </li>
-          <li class="matchesli">
+          <li class="matchesli">0
           </li>
         </ul>
       </div>
@@ -43,7 +67,7 @@
           <li>
             ATTEMPTS
           </li>
-          <li class="attemptsli">
+          <li class="attemptsli">0
           </li>
         </ul>
       </div>
@@ -52,172 +76,72 @@
           <li>
             ACCURACY
           </li>
-          <li class="accuracyli">
+          <li class="accuracyli">0 %
           </li>
         </ul>
       </div>
-      <div class="ulbox">
-        <ul class="box">
+      <div class="ulbox ulreset">
+        <ul class=" box">
           <li class="resetli">
-            RESET
-          </li>
-        </ul>
+            <button class="resetbutton">
+              RESET
+              <div class="resetdropdown">
+          <li class="reset hidden resetcurrentgame">CURRENT GAME</li>
+          <li class="reset hidden resetfullgame">FULL GAME</li>
       </div>
-      <div class="ulbox">
-        <ul class="difficultyli">
-          <div class="box">
+      </button>
+      </li>
+    </ul>
+    </div>
+    <div class="ulbox uldifficulty">
+      <div class="box">
+        <li class="difficultyli">
+          <button class="difficultybutton">
             DIFFICULTY
-        </ul>
+            <div class="difficultydropdown">
+        <li class="difficulty1 difficulty hidden introbutton introbutton1">ILLAOI
+        </li>
+        <li class="difficulty2 difficulty hidden introbutton introbutton2">SWAIN
+        </li>
+        <li class="difficulty3 difficulty hidden introbutton introbutton3">DARIUS
+        </li>
       </div>
+      </button>
+      </li>
+    </div>
+    </div>
     </ul>
   </nav>
 
   <header>
 
   </header>
-  <div id="modalYouWon" class="modal">
-    <p style="font-size: 32px">You won!<br>Play again?</p>
-    <div class="buttoncontainer">
-      <button class="modalAlertButton1">Yes Please!</button>
-      <button class="modalAlertButton2">No Thanks</button>
+  <div id="myModal" class="modal thismodal modalagain">
+    <div class="modal-content">
+      <div class="buttoncontainer">
+        <button class="introbutton introbutton1">ILLAOI<p class="smalltext">EASY</p></button>
+        <button class="introbutton introbutton2">SWAIN<p class="smalltext">MEDIUM</p></button>
+        <button class="introbutton introbutton3">DARIUS<p class="smalltext">HARD</p></button>
+      </div>
+    </div>
+  </div>
+  <div id="victory" class="victory modal thismodal modalagain">
+    <div class="modal-content">
+      <div class="playagainbuttoncontainer buttoncontainer">
+        <div class="playagain"></div>
+      </div>
     </div>
   </div>
   <div class="restcontainer">
-    <!-- <aside>
-    </aside> -->
     <div class="main">
-      <div class="row1 row">
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden illaoi"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden ziggs"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden veigar"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden riven"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden darius"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden vi"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row2 row">
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden tryndamere"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden kayn"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden illaoi"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden mordekaiser"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden kayn"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden darius"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row3 row">
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden vi"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden ziggs"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden tryndamere"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden mordekaiser"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden malphite"></div>
-          </div>
-        </div>
-        <div class="carddiv">
-          <div class="card">
-            <div class="cardfront"></div>
-            <div class="cardback hidden riven"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- <div class="sider"></div> -->
-  </div>
-  </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-    crossorigin="anonymous"></script>
+    </div>
+  </div>
   <script src="https://kit.fontawesome.com/358f1cd514.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
 </body>
 
 </html>
