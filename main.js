@@ -151,6 +151,7 @@ function stopAndPlaySoundsAndVideo(champion) {//--------------------------------
       break;
   }
 }
+function handleCardClick(event){
   var found = $(event.currentTarget).find('.disableclick').hasClass('disableclick'); //prevent multiple clicks begin
   if (found === true) {
     return;
