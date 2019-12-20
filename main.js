@@ -86,7 +86,7 @@ function initializeApp() {
     resetStats();
     displayStats();
     difficulty = 'illaoi'; //sets correct amount for reset button
-    stopAndPlaySoundsAndVideo('illaoi');
+    addAndRemoveBackgrounds('illaoi');
     $('.jquery-modal').hide();
     setTimeout(shuffleAndAppend('illaoi'), 1500);
   })
@@ -95,7 +95,7 @@ function initializeApp() {
     resetStats();
     displayStats();
     difficulty = 'swain';
-    stopAndPlaySoundsAndVideo('swain');
+    addAndRemoveBackgrounds('swain');
     $('.jquery-modal').hide();
     setTimeout(shuffleAndAppend('swain'), 1500);
   })
@@ -104,7 +104,7 @@ function initializeApp() {
     resetStats();
     displayStats();
     difficulty = 'darius';
-    stopAndPlaySoundsAndVideo('darius');
+    addAndRemoveBackgrounds('darius');
     $('.jquery-modal').hide();
     setTimeout(shuffleAndAppend('darius'), 1500);
   })
@@ -120,31 +120,19 @@ function showCard() {
   firstCardClicked = null;
   secondCardClicked = null;
 }
-function stopAndPlaySoundsAndVideo(champion) {//--------------------------------------video and audio control
-  $('.video1').addClass('hidden');
-  $('.video2').addClass('hidden');
-  $('.video3').addClass('hidden');
-  $('audio#illaoitheme')[0].pause()
-  $('audio#swaintheme')[0].pause()
-  $('audio#dariustheme')[0].pause()
-  $('audio#illaoitheme')[0].currentTime = 0;
-  $('audio#swaintheme')[0].currentTime = 0;
-  $('audio#dariustheme')[0].currentTime = 0;
+function addAndRemoveBackgrounds(champion) {//--------------------------------------video and audio control
+  $('body').removeClass('dariusbackground');
+  $('body').removeClass('illaoibackground');
+  $('body').removeClass('swainbackground');
   switch (champion) {
     case 'illaoi':
-      $('audio#illaoitheme').prop('volume', 0.5);
-      $('audio#illaoitheme')[0].play();
-      $('.video1').removeClass('hidden');
+      $('body').addClass('illaoibackground');
       break;
     case 'swain':
-      $('audio#swaintheme').prop('volume', 0.5);
-      $('audio#swaintheme')[0].play();
-      $('.video2').removeClass('hidden');
+      $('body').addClass('swainbackground');
       break;
     case 'darius':
-      $('audio#dariustheme').prop('volume', 0.5);
-      $('audio#dariustheme')[0].play();
-      $('.video3').removeClass('hidden');
+      $('body').addClass('dariusbackground');
       break;
     case 'victory':
       $('audio#victory')[0].play();
@@ -217,7 +205,7 @@ function handleCardClick(event){
       }, 1500);
     }
   }
-};
+}
 //--------------------------CARD CLICK END--------------------------
 
 //--------------------------STATS FUNCTIONS BEGIN--------------------------
