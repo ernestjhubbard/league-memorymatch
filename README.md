@@ -1,6 +1,6 @@
 # League of Legends Themed Memory Match
 
-A memory matching game with sounds and video from the video game
+A League of Legends themed Memory Matching Game
 
 # Technologies Used
 
@@ -11,7 +11,7 @@ A memory matching game with sounds and video from the video game
 
 # Preview
 
-![alt text](preview.png)
+![](preview.png)
 
 # Try it Live
 
