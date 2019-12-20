@@ -32,11 +32,14 @@ body{
 }
 .navbar{
   background: black;
-  opacity: .5;
+  opacity: .7;
   height: 7vh;
   font-size: 1.2rem;
   color: rgb(221, 243, 124);
   display: flex;
+}
+.difficultybutton, .resetbutton{
+  width: 100%;
 }
 button{
   color: inherit;
@@ -154,13 +157,25 @@ aside{
   display: flex;
   justify-content: space-around;
 }
+@media only screen and (max-width: 600px) {
+  .statbox {
+    font-size: .7rem;
+  }
+  .main{
+    width: 100%!important;
+    margin: 0;
+  }
+  .carddiv{
+    width: 20%;
+  }
+}
 .ulbox:hover{
 background: linear-gradient(to bottom, rgba(0, 0, 0, 0.418), rgba(255, 255, 255, 0.479));
 text-align: center;
 }
 .box{
   padding: 0;
-  width: auto;
+  width: 100%;
 }
 .ulbox{
   width: 20%;
@@ -184,13 +199,16 @@ ul{
   font-size: .9em;
 }
 .difficultydropdown{
-  margin-top: 30%;
+  margin-top: 20%;
+  background-color: gray;
 }
 .resetdropdown{
+  width: 100%;
   margin-top: 20%;
-  opacity: .6;
+  background-color: gray;
 }
 .reset{
+  width: 100%;
   position: relative;
   top: 10%;
   height: 8%;
