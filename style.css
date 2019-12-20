@@ -26,9 +26,10 @@ background-color: transparent;
 body{
   font-size:100%;
   margin:0;
-  overflow:hidden;
+  overflow-x:hidden!important;
   font-family: 'friz';
   height: 100vh;
+  width: 100%;
 }
 .navbar{
   background: black;
@@ -130,7 +131,7 @@ background: none;
 .restcontainer{
   display:flex;
   height:55vh;
-  width: 100vw;
+  width: 100%;
 }
 aside{
   width:25%;
@@ -158,6 +159,18 @@ aside{
   justify-content: space-around;
 }
 @media only screen and (max-width: 600px) {
+  .statbox {
+    font-size: .7rem;
+  }
+  .main{
+    width: 100%!important;
+    margin: 0;
+  }
+  .carddiv{
+    width: 20%;
+  }
+}
+@media only screen and (max-height: 500px) {
   .statbox {
     font-size: .7rem;
   }
