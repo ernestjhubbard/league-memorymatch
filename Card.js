@@ -131,7 +131,6 @@ class Card {
         new Stats('display');
         setTimeout(this.timeoutCardMatch, 1500);
         if (Stats.matches === Stats.matchesMax) {//-----------------------------------------------match win
-          stopAndPlaySoundsAndVideo('victory');
           $('.victory').modal({
             escapeClose: false,
             clickClose: false,

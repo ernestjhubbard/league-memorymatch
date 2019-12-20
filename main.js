@@ -67,15 +67,19 @@ function initializeApp() {
   });
   $('.uldifficulty').on('mouseenter', function () {//-------------------------------hover dropdown
     $('.difficulty').removeClass('hidden');
+    $('.carddiv').addClass('z-low');
   })
   $('.uldifficulty').on('mouseleave', function () {
     $('.difficulty').addClass('hidden');
+    $('.carddiv').removeClass('z-low');
   })
   $('.ulreset').on('mouseenter', function () {
     $('.reset').removeClass('hidden');
+    $('.carddiv').addClass('z-low');
   })
   $('.ulreset').on('mouseleave', function () {
     $('.reset').addClass('hidden');
+    $('.carddiv').removeClass('z-low');
   })
   $('.difficulty').on('click', function () {
     ++games_played;
@@ -186,7 +190,6 @@ function handleCardClick(event){
         secondCardClicked = null;
       }, 1500);
       if (matches === matches_max) {//-----------------------------------------------match win
-        stopAndPlaySoundsAndVideo('victory');
         $('.victory').modal({
           escapeClose: false,
           clickClose: false,
@@ -244,54 +247,41 @@ function shuffleAndAppend(difficulty) {
     'illaoi', 'illaoi',
     'darius', 'darius',
     'riven', 'riven',
-    'veigar', 'veigar',
     'ziggs', 'ziggs',
     'mordekaiser', 'mordekaiser',
     'vi', 'vi',
     'kayn', 'kayn',
     'shyvana', 'shyvana',
     'teemo', 'teemo',
-    'caitlyn', 'caitlyn',
     'lux', 'lux',
-    'masteryi', 'masteryi',
     'vayne', 'vayne',
     'annie', 'annie',
-    'twitch', 'twitch'
   ];
-  var newLength;
+  matches_max = 16;
   switch (difficulty) {
     case 'illaoi':
       $('li').css('color', 'rgb(221, 243, 124)');
-      matches_max = 12;
-      classArray.length -= 8;
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);
         $('.main').append($(`<div class="carddiv"><div class="card" onmouseover="hoverSound()" onclick="handleCardClick(event)"><div class="cardfront cardfrontillaoi"></div><div class="${classChosen} cardback hidden">`));
       }
-      $('.carddiv').css({ 'width': '16%', 'height': '29%' });
       break;
     case 'swain':
       $('li').css('color', 'rgb(243, 105, 105)');
-      matches_max = 14;
-      newLength = classArray.length - 4;
-      classArray.length = newLength;
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);
         $('.main').append($(`<div class="carddiv"><div class="card" onmouseover="hoverSound()" onclick="handleCardClick(event)"><div class="cardfront cardfrontswain"></div><div class="${classChosen} cardback hidden">`));
       }
-      $('.carddiv').css({ 'width': '14%', 'height': '25%' })
       break;
     case 'darius':
       $('li').css('color', '#ccc3c3');
-      matches_max = 16;
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);
         $('.main').append($(`<div class="carddiv"><div class="card" onmouseover="hoverSound()" onclick="handleCardClick(event)"><div class="cardfront cardfrontdarius"></div><div class="${classChosen} cardback hidden">`));
       }
-      $('.carddiv').css({ 'height': '26%' })
       break;
   }
 }
