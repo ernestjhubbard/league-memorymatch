@@ -236,7 +236,10 @@ function shuffleAndAppend(difficulty) {
       }
       break;
     case 'swain':
-      $('li').css('color', 'rgb(243, 105, 105)');
+      $('li').css({
+        'color': 'rgb(255, 105, 105)',
+        'background-color': 'black'
+      });
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);

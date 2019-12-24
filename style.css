@@ -268,7 +268,7 @@ aside{
   }
 }
 .ulreset:hover, .uldifficulty:hover{
-background: linear-gradient(to bottom, rgba(0, 0, 0, 0.418), rgba(255, 255, 255, 0.479));
+background: black;
 text-align: center;
 }
 .box{
@@ -299,12 +299,12 @@ ul{
 }
 .difficultydropdown{
   margin-top: 20%;
-  background-color: gray;
+  background-color: black;
 }
 .resetdropdown{
   width: 100%;
   margin-top: 20%;
-  background-color: gray;
+  background-color: black;
 }
 .reset{
   width: 100%;
