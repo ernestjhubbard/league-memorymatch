@@ -126,12 +126,14 @@ function handleCardClick(event){
     return
   }
   if (firstCardClicked === null && secondCardClicked === null) {
+    console.log(event.target);
+    console.log($(event.target));
     cardDiv1 = $(event.currentTarget).find('.cardfront');
     firstCardClicked = $(event.currentTarget).find('.cardback');
     firstCardSibling = $(event.currentTarget).find('.cardfront');
     firstImage = firstCardClicked.css('background-image');
     firstCardClicked.removeClass('hidden');
-    console.log(firstCardClicked);
+
     attempts++;
   }
   else if (firstCardClicked !== null) {//--------------------------------------------second card check
@@ -232,7 +234,7 @@ function shuffleAndAppend(difficulty) {
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);
-        $('.main').append($(`<div class="carddiv hover"><div class="card" onclick="handleCardClick(event)"><div class="cardfront cardfrontillaoi"></div><div class="${classChosen} cardback hidden">`));
+        $('.main').append($(`<div class="carddiv"><div class="card" onclick="handleCardClick(event)"><div class="cardfront hover cardfrontillaoi"></div><div class="${classChosen} cardback hidden">`));
       }
       break;
     case 'swain':
@@ -243,7 +245,7 @@ function shuffleAndAppend(difficulty) {
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);
-        $('.main').append($(`<div class="carddiv hover"><div class="card" onclick="handleCardClick(event)"><div class="cardfront cardfrontswain"></div><div class="${classChosen} cardback hidden">`));
+        $('.main').append($(`<div class="carddiv"><div class="card" onclick="handleCardClick(event)"><div class="cardfront hover cardfrontswain"></div><div class="${classChosen} cardback hidden">`));
       }
       break;
     case 'darius':
@@ -251,7 +253,7 @@ function shuffleAndAppend(difficulty) {
       while (classArray.length) {
         var randomChamp = Math.floor(Math.random() * classArray.length);
         var classChosen = classArray.splice(randomChamp, 1);
-        $('.main').append($(`<div class="carddiv hover"><div class="card" onclick="handleCardClick(event)"><div class="cardfront cardfrontdarius"></div><div class="${classChosen} cardback hidden">`));
+        $('.main').append($(`<div class="carddiv"><div class="card" onclick="handleCardClick(event)"><div class="cardfront hover cardfrontdarius"></div><div class="${classChosen} cardback hidden">`));
       }
       break;
   }

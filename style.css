@@ -156,8 +156,6 @@ aside{
   margin: 0;
   float:left;
   opacity: .9;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
 }
 
 .main{
@@ -315,11 +313,14 @@ ul{
   text-align: left;
   font-size: .9em;
 }
+
 li{
   text-align: center;
   background-color: transparent!important;
 }
 .hover:hover{
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
   transform: scale(1.3);
   z-index: 400;
 }
