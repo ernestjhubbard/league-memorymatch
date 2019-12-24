@@ -4,7 +4,6 @@
 }
 *{
   outline:none;
-  cursor: default;
 }
 *::selection{
 background-color: transparent;
@@ -50,6 +49,7 @@ button{
   background-image: url(Images/Win.png);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   height: 40%;
   width: 80%;
 }
@@ -85,6 +85,7 @@ background-color: rgba(0, 0, 0, 0.192);
 font-weight: bold;
 font-size: 1.4rem;
 opacity: .6;
+cursor: pointer;
 }
 .introbutton:hover{
 background: linear-gradient(to bottom, rgba(0, 0, 0, 0.116), rgba(255, 255, 255, 0.363), rgba(0, 0, 0, 0.116));
@@ -108,9 +109,11 @@ text-align: center;
 }
 li .difficulty:hover{
 text-align: left;
+cursor: pointer;
 background: none;
 }
 li .reset:hover{
+cursor: pointer;
 text-align: left;
 background: none;
 }
@@ -158,6 +161,7 @@ aside{
 }
 
 .main{
+  cursor: pointer;
   width:60%;
   display: flex;
   flex-wrap: wrap;
@@ -263,7 +267,7 @@ aside{
     height: 14vh;
   }
 }
-.ulbox:hover{
+.ulreset:hover, .uldifficulty:hover{
 background: linear-gradient(to bottom, rgba(0, 0, 0, 0.418), rgba(255, 255, 255, 0.479));
 text-align: center;
 }
@@ -272,6 +276,7 @@ text-align: center;
   width: 100%;
 }
 .ulbox{
+  cursor: default;
   width: 20%;
   display: flex;
   justify-content: space-evenly;
@@ -314,7 +319,7 @@ li{
   text-align: center;
   background-color: transparent!important;
 }
-.carddiv:hover{
+.hover:hover{
   transform: scale(1.3);
   z-index: 400;
 }
