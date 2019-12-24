@@ -126,8 +126,8 @@ function handleCardClick(event){
     return
   }
   if (firstCardClicked === null && secondCardClicked === null) {
+    $(event.target).removeClass('hover');
     console.log(event.target);
-    console.log($(event.target));
     cardDiv1 = $(event.currentTarget).find('.cardfront');
     firstCardClicked = $(event.currentTarget).find('.cardback');
     firstCardSibling = $(event.currentTarget).find('.cardfront');
@@ -137,6 +137,7 @@ function handleCardClick(event){
     attempts++;
   }
   else if (firstCardClicked !== null) {//--------------------------------------------second card check
+    $(event.target).removeClass('hover');
     cardDiv2 = $(event.currentTarget).find('.cardfront');
     secondCardClicked = $(event.currentTarget).find('.cardback')
     secondCardSibling = $(event.currentTarget).find('.cardfront')
@@ -170,6 +171,7 @@ function handleCardClick(event){
       }
     } else {//-----------------------------------------------------------------------failed match
       setTimeout(function () {
+        $('.cardfront').addClass('hover');
         displayStats();
         firstCardClicked.addClass('hidden');
         secondCardClicked.addClass('hidden');

@@ -324,10 +324,6 @@ li{
   transform: scale(1.3);
   z-index: 400;
 }
-.carddiv :checked{
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-}
 .cardfront{
   opacity: 1;
 }
