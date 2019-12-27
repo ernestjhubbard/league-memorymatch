@@ -2,7 +2,7 @@ $(document).ready(initializeApp);
 var gamesPlayed = ('.gamesplayedli');
 var attempts = 0;
 var games_played = null;
-var matches_max = 14;
+var matches_max = 12;
 var matches = 0;
 var firstCardClicked = null;
 var secondCardClicked = null;
@@ -127,7 +127,6 @@ function handleCardClick(event){
   }
   if (firstCardClicked === null && secondCardClicked === null) {
     $(event.target).removeClass('hover');
-    console.log(event.target);
     cardDiv1 = $(event.currentTarget).find('.cardfront');
     firstCardClicked = $(event.currentTarget).find('.cardback');
     firstCardSibling = $(event.currentTarget).find('.cardfront');
@@ -161,11 +160,15 @@ function handleCardClick(event){
         secondCardClicked = null;
       }, 1500);
       if (matches === matches_max) {//-----------------------------------------------match win
-        $('.victory').modal({
-          escapeClose: false,
-          clickClose: false,
-          showClose: false
-        });
+        setTimeout(function (){
+          $('.carddiv').removeClass('hidden');
+          $('.cardback').removeClass('hidden');
+          $('.victory').modal({
+            escapeClose: false,
+            clickClose: false,
+            showClose: false
+          });
+        }, 1500);
         ++games_played;
         resetStats();
       }
@@ -229,7 +232,6 @@ function shuffleAndAppend(difficulty) {
     'vayne', 'vayne',
     'annie', 'annie',
   ];
-  matches_max = 12;
   switch (difficulty) {
     case 'illaoi':
       $('li').css('color', 'rgb(221, 243, 124)');
